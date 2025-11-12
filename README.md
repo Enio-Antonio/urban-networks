@@ -81,34 +81,17 @@ O script produz duas saídas principais:
     mínima otimizada (as rotas da MST) destacada em vermelho.
 
 ## 📈 Resultados
-A análise dos fatores de custo e limitações do método MST + A* mostra que o comprimento da rede viária mínima entre pontos de 
-interesse (POIs) varia conforme três aspectos principais: morfologia urbana, topografia e eficiência da malha viária.
-
-A escolha dos POIs define a escala da análise. Usar shoppings (shop=mall) representa uma rede regional, conectando grandes polos 
-comerciais — poucas conexões longas, avaliando a infraestrutura principal. Já escolas (amenity=school) criariam uma rede densa e 
-local, medindo a eficiência da malha viária de bairro. Hospitais (amenity=hospital) ficariam entre esses dois extremos. Assim, mudar o 
-tipo de POI muda completamente a pergunta investigada.
-
-Quanto às limitações do método, a MST representa apenas a rede de menor quilometragem, sem redundância — diferente das redes reais, 
-que precisam de rotas alternativas para garantir resiliência. O algoritmo A* usa distância como custo, ignorando o tempo de 
-deslocamento, o que pode levar a rotas curtas, porém lentas. Além disso, a qualidade dos resultados depende fortemente dos dados do 
-OpenStreetMap, que podem conter lacunas ou classificações incorretas. Há também simplificações de modelagem, como o uso de nós 
-próximos ao POI (nem sempre o ponto de acesso real) e a suposição de custo uniforme por km, o que não reflete diferenças locais (ex.: 
-túneis x avenidas planas).
-
-Em síntese, o método MST + A* é valioso para análises comparativas de alto nível, permitindo identificar padrões de espalhamento 
-urbano e o impacto de barreiras geográficas. Contudo, para fins de planejamento urbano real, ele deve ser complementado por 
-informações sobre tráfego, redundância e custos reais de infraestrutura.
+Primeiramente, a escolha dos POIs define a escala da análise. Usar shoppings representa uma rede regional, conectando grandes polos comerciais com poucas conexões longas, avaliando a infraestrutura principal. Além disso, o método MST representa apenas a rede de menor quilometragem, sem redundância — diferente das redes reais, que precisam de rotas alternativas para garantir resiliência. O algoritmo A* usa distância como custo, ignorando o tempo de deslocamento, o que pode levar a rotas curtas, porém lentas. Além disso, a qualidade dos resultados depende fortemente dos dados do OpenStreetMap, que podem conter lacunas ou classificações incorretas. Por exemplo, tem se o número de shoppings em São Luís, visto que não faz sentido a diferença exacerbada entre quantidade de POIs em comparação com as outras capitais (considerando os níveis de desenvolvimento econômico). Há também simplificações de modelagem, como o uso de nós próximos ao POI (nem sempre o ponto de acesso real) e a suposição de custo uniforme por km, o que não reflete diferenças locais (ex.: túneis x avenidas planas). Em síntese, a análise dos resultados da tabela sugere que, enquanto o modelo da MST oferece uma boa aproximação da rede idealizada entre os shoppings, ele não reflete completamente as realidades práticas das distâncias de transporte urbano. Fatores como a distribuição geográfica dos POIs, a infraestrutura existente e a capacidade real das vias de transporte influenciam as distâncias percorridas na prática e devem ser considerados em análises mais aprofundadas.
 
 ### Tabela de Resultados
 | Cidade         |   POIs (Shoppings) |   Compr. Total MST (km) |   Compr. Rede Real (km) |   MST (km/POI) |   Rede Real (km/POI) |   Compr. Médio Aresta MST (km) |   Desv. Padrão Aresta MST (km) |
 |---------------|-------------------|------------------------|------------------------|---------------|---------------------|-------------------------------|-------------------------------|
 | São Luís       |                124 |                   94.57 |                   85.61 |           0.76 |                 0.69 |                           0.77 |                           0.91 |
+| Fortaleza |                122 |                  112.68 |                  104.79 |           0.92 |                 0.86 |                           0.93 |                           0.81 |
 | João Pessoa    |                 37 |                   30.24 |                   28.83 |           0.82 |                 0.78 |                           0.84 |                           0.98 |
+| Recife    |                 32 |                   58.64 |                   54.96 |           1.83 |                 1.72 |                           1.89 |                           1.43 |
 | Natal          |                 74 |                   61.8  |                   58.07 |           0.84 |                 0.78 |                           0.85 |                           1.04 |
 | Aracaju        |                 31 |                   35.18 |                   33.97 |           1.13 |                 1.1  |                           1.17 |                           1.09 |
 | Maceió         |                 21 |                   34.95 |                   34.03 |           1.66 |                 1.62 |                           1.75 |                           1.21 |
 | Teresina       |                 10 |                   21.06 |                   19.98 |           2.11 |                 2    |                           2.34 |                           1.37 |
 | Palmas         |                  4 |                   14.6  |                   14.32 |           3.65 |                 3.58 |                           4.87 |                           3.52 |
-| Fortaleza |                122 |                  112.68 |                  104.79 |           0.92 |                 0.86 |                           0.93 |                           0.81 |
-| Recife    |                 32 |                   58.64 |                   54.96 |           1.83 |                 1.72 |                           1.89 |                           1.43 |
