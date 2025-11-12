@@ -6,6 +6,8 @@ O script foca em __shoppings__ como POIs de exemplo, mas pode ser adaptado para 
 a Árvore Geradora Mínima (MST) com base nas distâncias *reais* de rua (calculadas com A*), fornecendo uma estimativa de 
 *infraestrutura* de rede.
 
+> Link do vídeo: [https://youtu.be/8Q9HPAai6BQ](https://youtu.be/8Q9HPAai6BQ)
+
 ## Índice
 * [Pre-requisitos](#-pré-requisitos)
 * [Como usar](#-como-usar)
